@@ -3772,7 +3772,11 @@
       <div class="team-grid">
         <div class="team-card reveal">
           <div class="team-avatar team-avatar-photo">
-            <img src="images/shaon_vai.jpeg" alt="Md. Shaon Miah" />
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+              data-src="images/shaon_vai.jpeg"
+              alt="Md. Shaon Miah"
+            />
           </div>
           <div class="team-name">Md. Shaon Miah</div>
           <div class="team-role">Founder & Head of Operations</div>
@@ -3796,7 +3800,11 @@
         </div>
         <div class="team-card reveal reveal-delay-1">
           <div class="team-avatar team-avatar-photo">
-            <img src="images/mujahid_vai.jpeg" alt="Md. Mujahidul Islam" />
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+              data-src="images/mujahid_vai.jpeg"
+              alt="Md. Mujahidul Islam"
+            />
           </div>
           <div class="team-name">Md. Mujahidul Islam</div>
           <div class="team-role">Strategic Advisor</div>
@@ -3819,7 +3827,11 @@
         </div>
         <div class="team-card reveal reveal-delay-2">
           <div class="team-avatar team-avatar-photo">
-            <img src="images/sabbir_vai.jpeg" alt="Md. Sabbir Hossain" />
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+              data-src="images/sabbir_vai.jpeg"
+              alt="Md. Sabbir Hossain"
+            />
           </div>
           <div class="team-name">Md. Sabbir Hossain</div>
           <div class="team-role">Brand Promotion Specialist</div>
@@ -3843,7 +3855,11 @@
         </div>
         <div class="team-card reveal reveal-delay-3">
           <div class="team-avatar team-avatar-photo">
-            <img src="images/alamin_vai.jpeg" alt="Md. Al Amin Rahmatullah" />
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+              data-src="images/alamin_vai.jpeg"
+              alt="Md. Al Amin Rahmatullah"
+            />
           </div>
           <div class="team-name">Md. Al Amin Rahmatullah</div>
           <div class="team-role">Full Stack Developer</div>
@@ -3897,7 +3913,11 @@
         </div>
         <div class="team-card reveal reveal-delay-1">
           <div class="team-avatar team-avatar-photo">
-            <img src="images/omarfaruq.png" alt="Omar Faruq" />
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+              data-src="images/omarfaruq.png"
+              alt="Omar Faruq"
+            />
           </div>
           <div class="team-name">Omar Faruq</div>
           <div class="team-role">Senior Flutter Developer</div>
@@ -3948,7 +3968,11 @@
         </div>
         <div class="team-card reveal reveal-delay-3">
           <div class="team-avatar team-avatar-photo">
-            <img src="images/yamin.png" alt="Md. Fakhrul Alam Yamin" />
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+              data-src="images/yamin.png"
+              alt="Md. Fakhrul Alam Yamin"
+            />
           </div>
           <div class="team-name">Md. Fakhrul Alam Yamin</div>
           <div class="team-role">Business Development Manager</div>
@@ -4639,6 +4663,22 @@
         const reveals = [...document.querySelectorAll(".reveal")];
         const statBars = [...document.querySelectorAll(".why-stat-fill")];
         const counters = [...document.querySelectorAll(".counter")];
+        const teamSection = document.getElementById("team");
+        const deferredTeamImages = teamSection
+          ? [...teamSection.querySelectorAll("img[data-src]")]
+          : [];
+        let teamImagesLoaded = false;
+
+        function loadTeamImages() {
+          if (teamImagesLoaded || !deferredTeamImages.length) return;
+          deferredTeamImages.forEach((img) => {
+            const src = img.getAttribute("data-src");
+            if (!src) return;
+            img.src = src;
+            img.removeAttribute("data-src");
+          });
+          teamImagesLoaded = true;
+        }
 
         function onScrollProgress() {
           const sy = window.scrollY;
@@ -4685,6 +4725,15 @@
               animCount(c, +c.dataset.target);
             }
           });
+
+          // Defer team portraits until the section is near the viewport
+          if (
+            teamSection &&
+            !teamImagesLoaded &&
+            teamSection.getBoundingClientRect().top < vh * 1.15
+          ) {
+            loadTeamImages();
+          }
         }
 
         // Also run on native scroll (fallback / mobile)
