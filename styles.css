@@ -1784,6 +1784,13 @@ footer {
   .nav-wrapper {
     padding: 14px 20px;
   }
+  .nav-logo-text {
+    display: none;
+  }
+  .nav-right .whatsapp-cta span,
+  .nav-mobile .nav-mobile-cta span {
+    display: none;
+  }
   .nav-pill {
     display: none;
   }
