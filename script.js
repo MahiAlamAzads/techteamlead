@@ -10,7 +10,7 @@
   let rafId = null;
   let isScrolling = false;
 
-  const EASE = 0.09; // lower = silkier (0.06–0.12 sweet spot)
+  const EASE = 0.075; // lower = silkier (0.06–0.12 sweet spot)
 
   function lerp(a, b, t) {
     return a + (b - a) * t;
@@ -52,7 +52,7 @@
         const delta =
           e.deltaY *
           (e.deltaMode === 1 ? 32 : e.deltaMode === 2 ? window.innerHeight : 1);
-        targetY = clampTarget(targetY + delta * 0.9);
+        targetY = clampTarget(targetY + delta * 0.78);
         if (!isScrolling) {
           isScrolling = true;
           currentY = window.scrollY;
