@@ -426,8 +426,25 @@
 
     mobileMenu.classList.toggle("open", shouldOpen);
     hamburger.classList.toggle("open", shouldOpen);
+    hamburger.setAttribute("aria-expanded", String(shouldOpen));
+    navbar?.classList.toggle("menu-open", shouldOpen);
     document.body.style.overflow = shouldOpen ? "hidden" : "";
   };
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    window.toggleMobileMenu(false);
+  });
+
+  window.addEventListener(
+    "resize",
+    () => {
+      if (window.innerWidth > 900) {
+        window.toggleMobileMenu(false);
+      }
+    },
+    { passive: true },
+  );
 
   /* ════════════════════════════════════════════════════
      11. FORM SUBMIT

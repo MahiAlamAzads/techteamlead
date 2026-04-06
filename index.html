@@ -148,6 +148,10 @@
         <button
           class="nav-hamburger"
           id="hamburgerBtn"
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
           onclick="toggleMobileMenu()"
         >
           <span></span><span></span><span></span>
@@ -159,20 +163,26 @@
     <div class="nav-mobile" id="mobileMenu">
       <div class="nav-mobile-header">
         <div class="nav-mobile-brand">
-          <span>TechTeamLead</span>
-          <span>Mobile Menu</span>
+          <span>Tech Team Lead</span>
+          <span>Bangladesh based engineering team</span>
+        </div>
+        <div class="nav-mobile-status">
+          <span class="nav-status-dot"></span>
+          Available Now
         </div>
       </div>
 
-      <a href="#services" onclick="toggleMobileMenu(false)">Services</a>
-      <a href="#about" onclick="toggleMobileMenu(false)">About</a>
-      <a href="#process" onclick="toggleMobileMenu(false)">Process</a>
-      <a href="#techstack" onclick="toggleMobileMenu(false)">Tech Stack</a>
-      <a href="#portfolio" onclick="toggleMobileMenu(false)">Work</a>
-      <a href="#pricing" onclick="toggleMobileMenu(false)">Pricing</a>
-      <a href="#team" onclick="toggleMobileMenu(false)">Team</a>
-      <a href="#faq" onclick="toggleMobileMenu(false)">FAQ</a>
-      <a href="#contact" onclick="toggleMobileMenu(false)">Contact</a>
+      <div class="nav-mobile-links">
+        <a href="#services" onclick="toggleMobileMenu(false)">Services</a>
+        <a href="#about" onclick="toggleMobileMenu(false)">About</a>
+        <a href="#process" onclick="toggleMobileMenu(false)">Process</a>
+        <a href="#techstack" onclick="toggleMobileMenu(false)">Tech Stack</a>
+        <a href="#portfolio" onclick="toggleMobileMenu(false)">Work</a>
+        <a href="#pricing" onclick="toggleMobileMenu(false)">Pricing</a>
+        <a href="#team" onclick="toggleMobileMenu(false)">Team</a>
+        <a href="#faq" onclick="toggleMobileMenu(false)">FAQ</a>
+        <a href="#contact" onclick="toggleMobileMenu(false)">Contact</a>
+      </div>
 
       <div class="nav-mobile-footer">
         <a
